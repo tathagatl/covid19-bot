@@ -1,0 +1,22 @@
+{
+  "name": "botkit-covid19-india",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "botbuilder-adapter-webex": "^1.0.8",
+    "botbuilder-storage-mongodb": "^0.9.5",
+    "botkit": "^4.9.0",
+    "botkit-plugin-cms": "^1.0.3",
+    "dotenv": "^7.0.0",
+    "follow-redirects": "^1.11.0",
+    "http": "0.0.1-security",
+    "request": "^2.88.2",
+    "unirest": "^0.6.0"
+  }
+}
