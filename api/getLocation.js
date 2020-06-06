@@ -8,11 +8,22 @@ const getLocation = async function (bot, pin) {
 
     var options = {
         'method': 'GET',
-        'url': 'https://atlas.mapmyindia.com/api/places/geocode?address=' + pin,
-        'headers': {
-            'Authorization': 'e426fe2c-5366-4cae-86ba-e7063c954615'
-        }
+        'url': 'https://eu1.locationiq.com/v1/search.php?key=790a0c91673f23&format=json&q=' + pin
     };
+
+    var getCityDetails = async (lat, lon) => {
+        let options2 = {
+            'method': 'GET',
+            'url': `https://us1.locationiq.com/v1/reverse.php?key=790a0c91673f23&lat=${lat}&lon=${lon}&format=json`
+        };
+        let city, state;
+        await axios(options2)
+            .then(async (res) => {
+                city = res.data.address.city
+                state = res.data.address.state
+            })
+        return { city, state }
+    }
 
     var location = ''
     var passLink = ''
@@ -21,12 +32,14 @@ const getLocation = async function (bot, pin) {
     await axios(options)
         .then(async (res) => {
 
-            const state = res.data.copResults.state
-            const city = res.data.copResults.city
-            const latitude = res.data.copResults.latitude
-            const longitude = res.data.copResults.longitude
+            const result = res.data.find(item => item.display_name.includes('India'))
 
-            location += res.data.copResults.district + ' ' + res.data.copResults.state
+
+            const latitude = result.lat
+            const longitude = result.lon
+            const { city, state } = await getCityDetails(latitude, longitude)
+
+            location += city + ' ' + state
             passLink += travelPass.find(item => item.state === state).link
             helplineNo += helpline.find(item => item.state === state).number
 
@@ -35,7 +48,7 @@ const getLocation = async function (bot, pin) {
 
         })
         .catch(err => {
-            if (err.response.data.error === 'invalid_token') console.log(err)
+            console.log(err)
         })
     await bot.say('Call your state helpline number ' + helplineNo + ' for any COVID related help').catch(err => console.log(err))
     await bot.say('Get your travel pass from: ' + passLink).catch(err => console.log(err))
