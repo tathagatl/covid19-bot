@@ -1,15 +1,15 @@
 const { BotkitConversation } = require('botkit');
-const getLocation = require('../api/getLocation')
+const getTravelDetails = require('../api/getTravelDetails')
 
 module.exports = function (controller) {
 
-    const convo = new BotkitConversation('getPinCode', controller);
+    const convo = new BotkitConversation('travel', controller);
 
     convo.ask('What is your Pincode (6-Digit Number)?', [
         {
             pattern: new RegExp(/(^[1-9]{1}[0-9]{5}$)/),
             handler: async (response, convo, bot, full_message) => {
-                await getLocation(bot, response)
+                await getTravelDetails(bot, response)
             }
         },
         {
@@ -34,17 +34,15 @@ module.exports = function (controller) {
 
     controller.addDialog(convo);
 
-    controller.hears('local', 'message,direct_message', async (bot, message) => {
-
-        await bot.beginDialog('getPinCode');
+    controller.hears('travel', 'message,direct_message', async (bot, message) => {
+        await bot.beginDialog('travel');
     });
 
     controller.on('attachmentActions', async (bot, message) => {
 
-        if (message.value === 'local') await bot.beginDialog('getPinCode');
+        if (message.value === 'travel') await bot.beginDialog('travel');
 
     })
 
-    controller.commandHelp.push({ command: 'local', text: 'Covid cases near me' });
-
+    controller.commandHelp.push({ command: 'travel', text: 'Want to know more about how to obtain a travel pass' });
 }

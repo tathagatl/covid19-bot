@@ -13,22 +13,26 @@ const getDistrictData = async function (state, city, bot) {
             const stateData = stateList.filter(key => key === state).reduce((obj, key) => {
                 return res.data.districtsDaily[key];
             }, {});
-            const districtList = Object.keys(stateData)
-            const districtData = districtList.filter(key => key === city).reduce((obj, key) => {
-                return stateData[key];
-            }, {});
-            const { active, confirmed, deceased, recovered } = districtData[districtData.length - 1]
+            if (stateData !== undefined) {
+                const districtList = Object.keys(stateData)
+                const districtData = districtList.filter(key => key === city).reduce((obj, key) => {
+                    return stateData[key];
+                }, {});
+                if (districtData !== undefined) {
+                    const { active, confirmed, deceased, recovered } = districtData[districtData.length - 1]
 
-            botResponse += `Daily stats for ${city}, ${state}\n`
+                    botResponse += `Daily stats for ${city}, ${state}\n`
 
-            botResponse += `Confirmed\t${confirmed}\n`
-            botResponse += `Active\t\t${active}\n`
-            botResponse += `Recovered\t${recovered}\n`
-            botResponse += `Deceased\t${deceased}\n`
+                    botResponse += `Confirmed\t${confirmed}\n`
+                    botResponse += `Active\t\t${active}\n`
+                    botResponse += `Recovered\t${recovered}\n`
+                    botResponse += `Deceased\t${deceased}\n`
+                }
+            }
         })
         .catch(err => console.log(err))
 
-    await bot.say(botResponse).catch(err => console.log(err))
+    if (botResponse !== '') await bot.say(botResponse).catch(err => console.log(err))
 }
 
 module.exports = getDistrictData

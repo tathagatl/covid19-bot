@@ -18,7 +18,8 @@ const getContainmentZones = async function (lat, lng, bot) {
         .then((res) => {
             if (res.data.containmentsAvailability) {
                 dataAvailable = true
-                botResponse += res.data.containmentZoneNames.toString()
+                botResponse += res.data.containmentZoneNames.join(', ')
+                console.log(res.data.containmentZoneNames.toString())
             } else {
                 dataAvailable = false
             }

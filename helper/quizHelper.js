@@ -1,5 +1,8 @@
 const questionConvo = (convo, question) => {
-    var score = ''
+    var score = 0
+
+    // question 1
+
     let questionDisplay = ''
     questionDisplay += `1.\t${question[0].question}(a/b/c/d)\n`
     questionDisplay += `a.\t${question[0].option1}\n`
@@ -24,8 +27,8 @@ const questionConvo = (convo, question) => {
                 handler: async (response, convo) => {
 
                     if (response == question[0].answer) {
-                        score += '1'
-                        console.log(score)
+                        score++
+                        // console.log(score)
                         await convo.gotoThread('quiz1')
                     }
                     else {
@@ -34,6 +37,8 @@ const questionConvo = (convo, question) => {
                 }
             }
         ], {}, 'quiz');
+
+    // question 2
 
     let questionDisplay1 = ''
     questionDisplay1 += `2.\t${question[1].question}(a/b/c/d)\n`
@@ -60,8 +65,8 @@ const questionConvo = (convo, question) => {
                 handler: async (response, convo) => {
 
                     if (response == question[1].answer) {
-                        score += '2'
-                        console.log(score)
+                        score++
+                        // console.log(score)
                         await convo.gotoThread('quiz2')
                     }
                     else {
@@ -70,6 +75,8 @@ const questionConvo = (convo, question) => {
                 }
             }
         ], {}, 'quiz1');
+
+    // question 3
 
     let questionDisplay2 = ''
     questionDisplay2 += `3.\t${question[2].question}(a/b/c/d)\n`
@@ -96,8 +103,8 @@ const questionConvo = (convo, question) => {
                 handler: async (response, convo) => {
 
                     if (response == question[2].answer) {
-                        score += '3'
-                        console.log(score)
+                        score++
+                        // console.log(score)
                         await convo.gotoThread('quiz3')
                     }
                     else {
@@ -106,6 +113,8 @@ const questionConvo = (convo, question) => {
                 }
             }
         ], {}, 'quiz2');
+
+    // question 4
 
     let questionDisplay3 = ''
     questionDisplay3 += `4.\t${question[3].question}(a/b/c/d)\n`
@@ -132,8 +141,8 @@ const questionConvo = (convo, question) => {
                 handler: async (response, convo) => {
 
                     if (response == question[3].answer) {
-                        score += '4'
-                        console.log(score)
+                        score++
+                        // console.log(score)
                         await convo.gotoThread('quiz4')
                     }
                     else {
@@ -142,6 +151,8 @@ const questionConvo = (convo, question) => {
                 }
             }
         ], {}, 'quiz3');
+
+    // question 5
 
     let questionDisplay4 = ''
     questionDisplay4 += `5.\t${question[4].question}(a/b/c/d)\n`
@@ -168,7 +179,8 @@ const questionConvo = (convo, question) => {
                 handler: async (response, convo) => {
 
                     if (response == question[4].answer) {
-                        score += '5'
+                        score++
+                        // console.log(score)
                         await convo.gotoThread('success')
                     }
                     else {
@@ -179,6 +191,7 @@ const questionConvo = (convo, question) => {
         ], {}, 'quiz4');
 
     // Thread: quiz - success
+    console.log(score)
     convo.addMessage('Congrats, you have scored ' + score + ' out of 5!', 'success');
 
     // Thread: quiz - missed

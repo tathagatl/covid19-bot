@@ -4,12 +4,14 @@ const questionConvo = require('../helper/quizHelper')
 
 module.exports = function (controller) {
 
+    // Randomly select question
+
     const shuffled = quizData.sort(() => 0.5 - Math.random());
     let selected = shuffled.slice(0, 5);
 
     const convo = new BotkitConversation('quiz_chat', controller);
 
-    convo.ask('Ready for a challenge? (yes/no/cancel)', [
+    convo.ask('Ready for a challenge? (yes/no)', [
         {
             pattern: 'yes|ya|yeah|sure|oui|si',
             handler: async (response, convo) => {
@@ -57,6 +59,12 @@ module.exports = function (controller) {
         await bot.beginDialog('quiz_chat');
     });
 
-    controller.commandHelp.push({ command: 'quiz', text: 'Test your knowledge about COVID19' });
+    controller.on('attachmentActions', async (bot, message) => {
+
+        if (message.value === 'quiz') await bot.beginDialog('quiz_chat');
+
+    })
+
+    controller.commandHelp.push({ command: 'quiz', text: 'Play a quiz to test your covid 19 knowledge' });
 
 }

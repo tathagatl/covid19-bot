@@ -15,7 +15,7 @@ const getNationalData = async function (bot) {
             const totalActive = totalconfirmed - totalrecovered - totaldeceased
             const dailyActive = dailyconfirmed - dailyrecovered - dailydeceased
 
-            botResponse += `${'---------'}\tOverall\tYesterday\n`
+            botResponse += Array(10).fill('\xa0').join('') + `\t\tOverall\tYesterday\n`
             botResponse += `Confirmed\t${totalconfirmed}\t${dailyconfirmed}\n`
             botResponse += `Active\t\t${totalActive}\t${dailyActive}\n`
             botResponse += `Recovered\t${totalrecovered}\t${dailyrecovered}\n`

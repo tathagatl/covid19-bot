@@ -1,10 +1,10 @@
 var axios = require('axios');
 var getContainmentZones = require('./getContainmentZone')
 var getDistrictData = require('./getDistrictData')
- var travelPass = require('../data/travelPass')
+var travelPass = require('../data/travelPass')
 var helpline = require('../data/helpline')
 
-const getLocation = async function (bot, pin) {
+const getTravelDetails = async function (bot, pin) {
 
     var options = {
         'method': 'GET',
@@ -47,13 +47,8 @@ const getLocation = async function (bot, pin) {
                 stateLocation += state
 
                 const link = travelPass.find(item => item.state === state)
-                console.log(link)
-                const no = helpline.find(item => item.state === state)
                 if (link !== undefined) passLink += link.link
-                if (no !== undefined) helplineNo += no.number
 
-                await getDistrictData(state, city, bot)
-                await getContainmentZones(latitude, longitude, bot)
             }
 
         })
@@ -62,8 +57,13 @@ const getLocation = async function (bot, pin) {
             error = true
         })
     if (error) await bot.say('Sorry, we don\'t have data available for your pincode!').catch(err => console.log(err))
-    if (stateLocation !== '' && helplineNo !== '') await bot.say('Call your state helpline number ' + helplineNo + ' for any COVID related help').catch(err => console.log(err))
-    if (stateLocation !== '' && passLink !== '') await bot.say('Get your travel pass from: ' + passLink).catch(err => console.log(err))
+    if (stateLocation !== '' && passLink !== '') {
+        await bot.say('Get your travel pass from: ' + passLink).catch(err => console.log(err))
+        await bot.say('Be sure to take the following documents with you while travelling!\n').catch(err => console.log(err))
+        await bot.say('1.\tTravel Permit').catch(err => console.log(err))
+        await bot.say('2.\tAadhar Card').catch(err => console.log(err))
+    }
+    if (stateLocation !== '' && passLink === '') await bot.say('Sorry, we don\'t have travel pass details for your pincode ').catch(err => console.log(err))
 }
 
-module.exports = getLocation
+module.exports = getTravelDetails
