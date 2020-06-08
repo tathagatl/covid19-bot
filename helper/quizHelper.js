@@ -7,8 +7,8 @@ const questionConvo = (convo, question) => {
     questionDisplay += `1.\t${question[0].question}(a/b/c/d)\n`
     questionDisplay += `a.\t${question[0].option1}\n`
     questionDisplay += `b.\t${question[0].option2}\n`
-    questionDisplay += `c.\t${question[0].option3}\n`
-    questionDisplay += `d.\t${question[0].option4}\n`
+    questionDisplay += question[0].option3 ? `c.\t${question[0].option3}\n` : ''
+    questionDisplay += question[0].option4 ? `d.\t${question[0].option4}\n` : ''
     convo.addQuestion({
         text: async (template, vars) => {
             return questionDisplay
@@ -44,8 +44,8 @@ const questionConvo = (convo, question) => {
     questionDisplay1 += `2.\t${question[1].question}(a/b/c/d)\n`
     questionDisplay1 += `a.\t${question[1].option1}\n`
     questionDisplay1 += `b.\t${question[1].option2}\n`
-    questionDisplay1 += `c.\t${question[1].option3}\n`
-    questionDisplay1 += `d.\t${question[1].option4}\n`
+    questionDisplay1 += question[1].option3 ? `c.\t${question[1].option3}\n` : ''
+    questionDisplay1 += question[1].option4 ? `d.\t${question[1].option4}\n` : ''
 
     convo.addQuestion({
         text: async (template, vars) => {
@@ -82,8 +82,8 @@ const questionConvo = (convo, question) => {
     questionDisplay2 += `3.\t${question[2].question}(a/b/c/d)\n`
     questionDisplay2 += `a.\t${question[2].option1}\n`
     questionDisplay2 += `b.\t${question[2].option2}\n`
-    questionDisplay2 += `c.\t${question[2].option3}\n`
-    questionDisplay2 += `d.\t${question[2].option4}\n`
+    questionDisplay2 += question[2].option3 ? `c.\t${question[2].option3}\n` : ''
+    questionDisplay2 += question[2].option4 ? `d.\t${question[2].option4}\n` : ''
 
     convo.addQuestion({
         text: async (template, vars) => {
@@ -120,8 +120,8 @@ const questionConvo = (convo, question) => {
     questionDisplay3 += `4.\t${question[3].question}(a/b/c/d)\n`
     questionDisplay3 += `a.\t${question[3].option1}\n`
     questionDisplay3 += `b.\t${question[3].option2}\n`
-    questionDisplay3 += `c.\t${question[3].option3}\n`
-    questionDisplay3 += `d.\t${question[3].option4}\n`
+    questionDisplay3 += question[3].option3 ? `c.\t${question[3].option3}\n` : ''
+    questionDisplay3 += question[3].option4 ? `d.\t${question[3].option4}\n` : ''
 
     convo.addQuestion({
         text: async (template, vars) => {
@@ -158,8 +158,8 @@ const questionConvo = (convo, question) => {
     questionDisplay4 += `5.\t${question[4].question}(a/b/c/d)\n`
     questionDisplay4 += `a.\t${question[4].option1}\n`
     questionDisplay4 += `b.\t${question[4].option2}\n`
-    questionDisplay4 += `c.\t${question[4].option3}\n`
-    questionDisplay4 += `d.\t${question[4].option4}\n`
+    questionDisplay4 += question[4].option3 ? `c.\t${question[4].option3}\n` : ''
+    questionDisplay4 += question[4].option4 ? `d.\t${question[4].option4}\n` : ''
 
     convo.addQuestion({
         text: async (template, vars) => {
