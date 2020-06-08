@@ -1,7 +1,7 @@
 var axios = require('axios');
 var getContainmentZones = require('./getContainmentZone')
 var getDistrictData = require('./getDistrictData')
- var travelPass = require('../data/travelPass')
+//  var travelPass = require('../data/travelPass')
 var helpline = require('../data/helpline')
 
 const getLocation = async function (bot, pin) {
@@ -46,10 +46,10 @@ const getLocation = async function (bot, pin) {
                 cityLocation += city
                 stateLocation += state
 
-                const link = travelPass.find(item => item.state === state)
-                console.log(link)
+                // const link = travelPass.find(item => item.state === state)
+                // console.log(link)
                 const no = helpline.find(item => item.state === state)
-                if (link !== undefined) passLink += link.link
+                // if (link !== undefined) passLink += link.link
                 if (no !== undefined) helplineNo += no.number
 
                 await getDistrictData(state, city, bot)
@@ -63,7 +63,7 @@ const getLocation = async function (bot, pin) {
         })
     if (error) await bot.say('Sorry, we don\'t have data available for your pincode!').catch(err => console.log(err))
     if (stateLocation !== '' && helplineNo !== '') await bot.say('Call your state helpline number ' + helplineNo + ' for any COVID related help').catch(err => console.log(err))
-    if (stateLocation !== '' && passLink !== '') await bot.say('Get your travel pass from: ' + passLink).catch(err => console.log(err))
+    // if (stateLocation !== '' && passLink !== '') await bot.say('Get your travel pass from: ' + passLink).catch(err => console.log(err))
 }
 
 module.exports = getLocation

@@ -191,8 +191,13 @@ const questionConvo = (convo, question) => {
         ], {}, 'quiz4');
 
     // Thread: quiz - success
-    console.log(score)
-    convo.addMessage('Congrats, you have scored ' + score + ' out of 5!', 'success');
+    convo.addMessage('Congratulations!', 'success');
+    convo.after(async (results, bot) => {
+        bot.say('You have scored ' + score + ' out of 5!')
+
+        // handle results.name, results.age, results.color
+
+    });
 
     // Thread: quiz - missed
     // convo.addMessage( 'Time elapsed! you missed it, sorry.', 'missed' ); //TODO
