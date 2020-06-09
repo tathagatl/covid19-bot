@@ -5,7 +5,7 @@ module.exports = function (controller) {
 
     const convo = new BotkitConversation('getPinCode', controller);
 
-    convo.ask('What is your Pincode (6-Digit Number)?', [
+    convo.ask('Please enter your Pincode (6-Digit Number)?', [
         {
             pattern: new RegExp(/(^[1-9]{1}[0-9]{5}$)/),
             handler: async (response, convo, bot, full_message) => {

@@ -31,6 +31,7 @@ const getContainmentZones = async function (lat, lng, bot) {
             await bot.say('There are 0 Contaiment zones within 5km radius of your pincode').catch(err => console.log(err))
         } else {
             await bot.say('Here are the containment zones near you: ' + botResponse).catch(err => console.log(err))
+            await bot.say('------------------------------------------------------------------').catch(err => console.log(err))
         }
     } else {
         await bot.say('Sorry, we don\'t have containment zone data available for your pincode').catch(err => console.log(err))

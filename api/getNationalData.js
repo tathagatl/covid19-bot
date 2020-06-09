@@ -1,4 +1,5 @@
 var axios = require('axios');
+const fmt = require('indian-number-format');
 
 const getNationalData = async function (bot) {
     var options = {
@@ -15,11 +16,12 @@ const getNationalData = async function (bot) {
             const totalActive = totalconfirmed - totalrecovered - totaldeceased
             const dailyActive = dailyconfirmed - dailyrecovered - dailydeceased
 
-            botResponse += Array(10).fill('\xa0').join('') + `\t\tOverall\tYesterday\n`
-            botResponse += `Confirmed\t${totalconfirmed}\t${dailyconfirmed}\n`
-            botResponse += `Active\t\t${totalActive}\t${dailyActive}\n`
-            botResponse += `Recovered\t${totalrecovered}\t${dailyrecovered}\n`
-            botResponse += `Deceased\t${totaldeceased}\t${dailydeceased}\n`
+            botResponse += `Confirmed cases till today\t${fmt.format(totalconfirmed)}\n`
+            botResponse += `Active cases till today\t\t${fmt.format(totalActive)}\n`
+            botResponse += `Recovered cases till today\t${fmt.format(totalrecovered)}\n`
+            botResponse += `Casualties till today\t\t\t${fmt.format(totaldeceased)}\n`
+            botResponse += `---------------------------------------------------------\n`
+            botResponse += `Number of new cases registered yesterday\t${fmt.format(dailyconfirmed)}\n`
         })
         .catch(err => console.log(err))
 

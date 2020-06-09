@@ -1,4 +1,5 @@
 var axios = require('axios');
+const fmt = require('indian-number-format');
 
 const getDistrictData = async function (state, city, bot) {
     var options = {
@@ -20,13 +21,20 @@ const getDistrictData = async function (state, city, bot) {
                 }, {});
                 if (districtData !== undefined) {
                     const { active, confirmed, deceased, recovered } = districtData[districtData.length - 1]
+                    const prevDayData = districtData[districtData.length - 2]
+                    const prevPrevDayData = districtData[districtData.length - 3]
+
+                    const yesterdayConfirmed = prevDayData.confirmed - prevPrevDayData.confirmed
 
                     botResponse += `Daily stats for ${city}, ${state}\n`
-
-                    botResponse += `Confirmed\t${confirmed}\n`
-                    botResponse += `Active\t\t${active}\n`
-                    botResponse += `Recovered\t${recovered}\n`
-                    botResponse += `Deceased\t${deceased}\n`
+                    botResponse += `---------------------------------------------------------\n`
+                    botResponse += `Confirmed cases till today\t${fmt.format(confirmed)}\n`
+                    botResponse += `Active cases till today\t\t${fmt.format(active)}\n`
+                    botResponse += `Recovered cases till today\t${fmt.format(recovered)}\n`
+                    botResponse += `Casualties till today\t\t\t${fmt.format(deceased)}\n`
+                    botResponse += `---------------------------------------------------------\n`
+                    botResponse += `Number of new cases registered yesterday\t${fmt.format(yesterdayConfirmed)}\n`
+                    botResponse += `---------------------------------------------------------\n`
                 }
             }
         })

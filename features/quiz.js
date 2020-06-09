@@ -11,44 +11,44 @@ module.exports = function (controller) {
 
     const convo = new BotkitConversation('quiz_chat', controller);
 
-    convo.ask('Ready for a challenge? (yes/no)', [
-        {
-            pattern: 'yes|ya|yeah|sure|oui|si',
-            handler: async (response, convo) => {
+    // convo.ask('Ready for a challenge? (yes/no)', [
+    //     {
+    //         pattern: 'yes|ya|yeah|sure|oui|si',
+    //         handler: async (response, convo) => {
 
-                convo.gotoThread('quiz');
-            }
-        },
-        {
-            pattern: 'no|neh|non|na|birk|cancel|stop|exit',
-            handler: async (response, convo) => {
+    //             convo.gotoThread('quiz');
+    //         }
+    //     },
+    //     {
+    //         pattern: 'no|neh|non|na|birk|cancel|stop|exit',
+    //         handler: async (response, convo) => {
 
-                await convo.gotoThread('cancel');
-            },
-        },
-        {
-            default: true,
-            handler: async (response, convo) => {
-                await convo.gotoThread('bad_answer');
-            }
-        }
-    ]);
+    //             await convo.gotoThread('cancel');
+    //         },
+    //     },
+    //     {
+    //         default: true,
+    //         handler: async (response, convo) => {
+    //             await convo.gotoThread('bad_answer');
+    //         }
+    //     }
+    // ]);
 
-    // Thread: bad response
-    convo.addMessage({
-        text: 'Sorry, I did not understand...',
-        action: 'default', // goes back to the thread's current state, where the question is not answered
-    }, 'bad_answer');
+    // // Thread: bad response
+    // convo.addMessage({
+    //     text: 'Sorry, I did not understand...',
+    //     action: 'default', // goes back to the thread's current state, where the question is not answered
+    // }, 'bad_answer');
 
-    // Thread: cancel
-    convo.addMessage({
-        text: 'Got it, cancelling...',
-        action: 'stop', // this marks the converation as unsuccessful
-    }, 'cancel');
+    // // Thread: cancel
+    // convo.addMessage({
+    //     text: 'Got it!',
+    //     action: 'stop', // this marks the converation as unsuccessful
+    // }, 'cancel');
 
-    // Thread: quiz
-
-    convo.addMessage('Let\'s go...', 'quiz');
+    // // Thread: quiz
+    convo.addMessage('Let\'s go...Type either a, b, c or d to answer !', 'quiz');
+    convo.addAction('quiz');
 
     questionConvo(convo, selected)
 

@@ -16,6 +16,8 @@
     "dotenv": "^7.0.0",
     "follow-redirects": "^1.11.0",
     "http": "0.0.1-security",
+    "indian-number-format": "^1.0.4",
+    "numeral": "^2.0.6",
     "request": "^2.88.2",
     "unirest": "^0.6.0"
   }

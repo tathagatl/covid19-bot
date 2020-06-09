@@ -4,8 +4,6 @@ module.exports = function (controller) {
 
     const convo = new BotkitConversation('guidelines', controller);
 
-    convo.say('Protect yourself')
-
     convo.say('🧼 Wash your hands frequently\n👄 Avoid touching your eyes, mouth and nose\n💪 Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze\n🚷 Avoid crowded places\n🏠Stay at home if you feel unwell - even with a slight fever and cough\n🤒 If you have a fever, cough and difficulty breathing, seek medical care early - but call by phone first')
 
     convo.ask('Do you want to watch a video? (yes/no)', [
@@ -39,7 +37,7 @@ module.exports = function (controller) {
 
     // Thread: cancel
     convo.addMessage({
-        text: 'Got it, cancelling...',
+        text: 'Got it!.',
         action: 'stop', // this marks the converation as unsuccessful
     }, 'cancel');
 

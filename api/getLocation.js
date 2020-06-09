@@ -62,7 +62,7 @@ const getLocation = async function (bot, pin) {
             error = true
         })
     if (error) await bot.say('Sorry, we don\'t have data available for your pincode!').catch(err => console.log(err))
-    if (stateLocation !== '' && helplineNo !== '') await bot.say('Call your state helpline number ' + helplineNo + ' for any COVID related help').catch(err => console.log(err))
+    if (stateLocation !== '' && helplineNo !== '') await bot.say({ markdown: 'Call your state helpline number **' + helplineNo + '** for any COVID related help' }).catch(err => console.log(err))
     // if (stateLocation !== '' && passLink !== '') await bot.say('Get your travel pass from: ' + passLink).catch(err => console.log(err))
 }
 
