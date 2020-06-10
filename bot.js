@@ -22,7 +22,7 @@
 
 // Load process.env values from .env file
 require('dotenv').config();
-const wakeUpDyno = require("wokeDyno.js");
+const wakeUpDyno = require("./helper/wakeUpDyno");
 
 if (!process.env.WEBEX_ACCESS_TOKEN) {
     console.log( '\n-->Token missing: please provide a valid Webex Teams user or bot access token in .env or via WEBEX_ACCESS_TOKEN environment variable');
