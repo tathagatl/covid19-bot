@@ -18,7 +18,7 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d|A|B|C|D',
+                pattern: '/^[a-d]$/gi',
                 handler: async (response, convo) => {
 
                     if (response.toLowerCase() == question[0].answer) {
@@ -56,7 +56,7 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d|A|B|C|D',
+                pattern: '/^[a-d]$/gi',
                 handler: async (response, convo) => {
 
                     if (response.toLowerCase() == question[1].answer) {
@@ -94,7 +94,7 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d|A|B|C|D',
+                pattern: '/^[a-d]$/gi',
                 handler: async (response, convo) => {
 
                     if (response.toLowerCase() == question[2].answer) {
@@ -132,7 +132,7 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d|A|B|C|D',
+                pattern: '/^[a-d]$/gi',
                 handler: async (response, convo) => {
 
                     if (response.toLowerCase() == question[3].answer) {
@@ -170,7 +170,7 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d|A|B|C|D',
+                pattern: '/^[a-d]$/gi',
                 handler: async (response, convo) => {
 
                     if (response.toLowerCase() == question[4].answer) {

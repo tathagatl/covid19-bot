@@ -22,6 +22,7 @@
 
 // Load process.env values from .env file
 require('dotenv').config();
+const wakeUpDyno = require("wokeDyno.js");
 
 if (!process.env.WEBEX_ACCESS_TOKEN) {
     console.log( '\n-->Token missing: please provide a valid Webex Teams user or bot access token in .env or via WEBEX_ACCESS_TOKEN environment variable');
@@ -163,6 +164,8 @@ if (public_url) {
 
     console.log('Health check available at: ' + public_url);
 }
+
+wakeUpDyno(process.env.HEROKU_URL);
 
 controller.commandHelp = [];
 
