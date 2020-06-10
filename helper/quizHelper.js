@@ -18,10 +18,10 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d',
+                pattern: 'a|b|c|d|A|B|C|D',
                 handler: async (response, convo) => {
 
-                    if (response == question[0].answer) {
+                    if (response.toLowerCase() == question[0].answer) {
                         score++
                         // console.log(score)
                         await convo.gotoThread('quiz1')
@@ -56,10 +56,10 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d',
+                pattern: 'a|b|c|d|A|B|C|D',
                 handler: async (response, convo) => {
 
-                    if (response == question[1].answer) {
+                    if (response.toLowerCase() == question[1].answer) {
                         score++
                         // console.log(score)
                         await convo.gotoThread('quiz2')
@@ -94,10 +94,10 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d',
+                pattern: 'a|b|c|d|A|B|C|D',
                 handler: async (response, convo) => {
 
-                    if (response == question[2].answer) {
+                    if (response.toLowerCase() == question[2].answer) {
                         score++
                         // console.log(score)
                         await convo.gotoThread('quiz3')
@@ -132,10 +132,10 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d',
+                pattern: 'a|b|c|d|A|B|C|D',
                 handler: async (response, convo) => {
 
-                    if (response == question[3].answer) {
+                    if (response.toLowerCase() == question[3].answer) {
                         score++
                         // console.log(score)
                         await convo.gotoThread('quiz4')
@@ -170,10 +170,10 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d',
+                pattern: 'a|b|c|d|A|B|C|D',
                 handler: async (response, convo) => {
 
-                    if (response == question[4].answer) {
+                    if (response.toLowerCase() == question[4].answer) {
                         score++
                         // console.log(score)
                         await convo.gotoThread('success')
@@ -195,7 +195,7 @@ const questionConvo = (convo, question) => {
     convo.addMessage('Congratulations!', 'success');
     convo.after(async (results, bot) => {
         bot.say('You have scored ' + score + ' out of 5!')
-
+        score = 0
         // handle results.name, results.age, results.color
 
     });

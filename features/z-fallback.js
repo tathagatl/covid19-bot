@@ -19,11 +19,8 @@ module.exports = function (controller) {
                         "body": [
                             {
                                 "type": "TextBlock",
-                                "text": "Here is a list of things that I can do for you. You can either "
-                            },
-                            {
-                                "type": "TextBlock",
-                                "text": "click on the appropriate button aur type the instruction."
+                                "text": "Here is a list of things that I can do for you. You can either click on the appropriate button and type the instruction.",
+                                "wrap": true
                             },
                             {
                                 "type": "ColumnSet",
@@ -51,11 +48,8 @@ module.exports = function (controller) {
                                         "items": [
                                             {
                                                 "type": "TextBlock",
-                                                "text": "View the number of Covid 19 cases in"
-                                            },
-                                            {
-                                                "type": "TextBlock",
-                                                "text": "India and related statistics"
+                                                "text": "View the number of Covid 19 cases in India and related statistics",
+                                                "wrap": true
                                             }
                                         ],
                                         "horizontalAlignment": "Left",
@@ -90,11 +84,8 @@ module.exports = function (controller) {
                                         "items": [
                                             {
                                                 "type": "TextBlock",
-                                                "text": "View the number of Covid 19 cases near my"
-                                            },
-                                            {
-                                                "type": "TextBlock",
-                                                "text": "area"
+                                                "text": "View the number of Covid 19 cases and containment zones near my area",
+                                                "wrap": true
                                             }
                                         ],
                                         "verticalContentAlignment": "Bottom"
@@ -127,11 +118,8 @@ module.exports = function (controller) {
                                         "items": [
                                             {
                                                 "type": "TextBlock",
-                                                "text": "Want to travel?"
-                                            },
-                                            {
-                                                "type": "TextBlock",
-                                                "text": "Know more about applying for a travel pass"
+                                                "text": "Want to travel within your city? Know more about applying for a travel pass",
+                                                "wrap": true
                                             }
                                         ],
                                         "verticalContentAlignment": "Bottom"
@@ -164,11 +152,8 @@ module.exports = function (controller) {
                                         "items": [
                                             {
                                                 "type": "TextBlock",
-                                                "text": "Know more about protecting yourself from"
-                                            },
-                                            {
-                                                "type": "TextBlock",
-                                                "text": "Covid 19"
+                                                "text": "Know more about protecting yourself from Covid 19",
+                                                "wrap": true
                                             }
                                         ]
                                     }
@@ -200,7 +185,8 @@ module.exports = function (controller) {
                                         "items": [
                                             {
                                                 "type": "TextBlock",
-                                                "text": "Play a quiz to test your Covid 19 knowledge"
+                                                "text": "Play a quiz to test your Covid 19 knowledge",
+                                                "wrap": true
                                             }
                                         ],
                                         "verticalContentAlignment": "Center"
