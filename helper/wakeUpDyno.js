@@ -23,6 +23,7 @@ const wakeUpDyno = (url, interval = 25, callback) => {
             }
             finally {
                 // do it all again
+                console.log('Final Finally Called')
                 return wakeUpDyno(url, interval, callback);
             }
             
