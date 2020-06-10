@@ -24,6 +24,8 @@
 require('dotenv').config();
 const wakeUpDyno = require("./helper/wakeUpDyno");
 
+const HEROKU_URL='https://webex-covid19-india.herokuapp.com/';
+
 if (!process.env.WEBEX_ACCESS_TOKEN) {
     console.log( '\n-->Token missing: please provide a valid Webex Teams user or bot access token in .env or via WEBEX_ACCESS_TOKEN environment variable');
     process.exit(1);
@@ -165,7 +167,7 @@ if (public_url) {
     console.log('Health check available at: ' + public_url);
 }
 
-wakeUpDyno(process.env.HEROKU_URL);
+wakeUpDyno(HEROKU_URL);
 
 controller.commandHelp = [];
 
