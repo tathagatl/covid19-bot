@@ -12,6 +12,7 @@ module.exports = function (controller) {
     controller.on('attachmentActions', async (bot, message) => {
 
         if (message.value === 'national') {
+            console.log('1')
             await bot.say('Here are the national stats for COVID19:\n');
             await bot.say('---------------------------------------------------------\n');
             await getNationalData(bot);
