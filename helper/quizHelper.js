@@ -18,7 +18,7 @@ const questionConvo = (convo, question) => {
     },
         [
             {
-                pattern: 'a|b|c|d|A|B|C|D',
+                pattern: '^a|b|c|d|A|B|C|D$',
                 handler: async (response, convo) => {
 
                     if (response.toLowerCase() == question[0].answer) {
