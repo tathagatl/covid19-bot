@@ -14,7 +14,7 @@
     "botkit": "^4.9.0",
     "botkit-plugin-cms": "^1.0.3",
     "dotenv": "^7.0.0",
-    "follow-redirects": "^1.11.0",
+    "follow-redirects": "^1.14.7",
     "http": "0.0.1-security",
     "indian-number-format": "^1.0.4",
     "node-fetch": "^2.6.0",
